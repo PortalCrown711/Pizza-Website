@@ -1,0 +1,950 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Pizza Landing Page</title>
+    <!-- Box Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <!-- Bootstrap CSS for responsiveness -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Link to your CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+  <style>
+/* Cart Dropdown Style */
+.cart-dropdown {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: white;
+    width: 250px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    display: none;
+    max-height: 300px;
+    overflow: hidden; /* Ensure overflow is hidden initially */
+}
+
+.cart:hover .cart-dropdown {
+    display: block;
+}
+
+#cart-items {
+    max-height: 200px;
+    overflow-y: auto; /* Ensure vertical overflow is enabled */
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.remove-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.remove-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Total Price Style */
+#cart-total {
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: right;
+}
+
+/* Scrollbar Styling */
+#cart-items::-webkit-scrollbar {
+    width: 8px; /* Adjust scrollbar width */
+}
+
+#cart-items::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px; /* Round the corners */
+}
+
+#cart-items::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+  </style>
+
+</head>
+<body>
+    <header>
+        <!-- Logo -->
+        <a href="#" class="logo">Slice of Heaven</a>
+        <!-- Mobile Menu Icon -->
+        <div class="bx bx-menu" id="menu-icon"></div>
+        
+        <ul class="navbar">
+            <!-- Navigation Links -->
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#services">Service</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <!-- Login/Signup Button -->
+            <li><a href="https://portalcrown711.github.io/BS-Form/" id="login-btn">Login/Signup</a></li>
+            <!-- Cart Icon with Cart Count -->
+            <li class="cart">
+                <a href="#" id="cart-icon">
+                    <i class='bx bx-cart'></i> <span id="cart-count">0</span>
+                </a>
+                <!-- Cart Dropdown Section -->
+                <div id="cart-dropdown" class="cart-dropdown">
+                    <ul id="cart-items"></ul>
+                    <div id="cart-total">Total: ₹0</div>
+                    <div id="cart-summary"></div>
+                    <button id="checkout-btn">Checkout</button>
+                </div>
+            </li>
+            <!-- Dark Mode Toggle -->
+            <li>
+                <div class="bx bx-moon" id="darkmode"></div>
+            </li>
+        </ul>
+    </header>
+    
+    
+    
+    
+    <!-- Home  Section-->
+    <section class="home" id="home">
+        <div class="home-text">
+            <h1>Pizza Taste</h1>
+            <h2>The tasty pizza of <br> your choice</h2>
+            <a href="#menu" class="btn">View Menu</a>
+        </div>
+        <div class="home-img">
+            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80.png" alt="">
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="about-img">
+            <img src="https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395__480.jpg" alt="">
+        </div>
+        <div class="about-text">
+            <span>About Us</span>
+            <h2>We make good and <br> tasty pizzas</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quo iure rem ducimus tenetur deserunt commodi doloribus, quibusdam vel fuga?</p>
+            <a href="#" class="btn">Learn More</a>
+        </div>
+    </section>
+
+   <!-- Menu -->
+   <section class="menu" id="menu">
+    <div class="heading">
+        <span>Menu</span>
+        <h2>Tasty menu of the week</h2>
+    </div>
+
+    <!-- Pizza Section -->
+    <div class="category-heading">
+        <h3 style="text-align: center; color: #e63946;">Pizza</h3>
+    </div>
+    <div class="menu-container">
+        <!-- Cheese Pizza -->
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/premium-photo/classic-cheese-pizza-feast_1249700-17454.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="Cheese Pizza">
+            </div>
+            <h2>Cheese Pizza <img src="veg-icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+            <h3>Classic Cheese Delight</h3>
+            <p>A delicious pizza topped with melted cheese and a rich tomato base.</p>
+            <p>Perfect for cheese lovers and those seeking a classic taste.</p>
+            <br>
+            <span>₹240</span>
+            <span>Size: Medium 11'inch</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+    
+        <!-- Tropical Pizza -->
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/premium-photo/closeup-shot-slice-pineapple-paradise-pizza-showcasing-its-goldenbrown-crust-gooey-cheese_860462-5006.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="Tropical Pizza">
+            </div>
+            <h2>Tropical Pizza <img src="non-veg icon.png" alt="" style="width: 20px; height: 20px;"></h2>
+            <h3>Pineapple and Ham Combo</h3>
+            <p>A unique blend of pineapple and ham on a crispy crust.</p>
+            <p>Sweet and savory flavors combined for a tropical twist.</p>
+            <br>
+            <span>₹240</span>
+            <span>Size: Medium 11'inch</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+    
+        <!-- Margerita Pizza -->
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/free-photo/imeretian-khachapuri-cheese-lemon-side-view_140725-11276.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="Margerita Pizza">
+            </div>
+            <h2>Margerita Pizza <img src="veg-icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+            <h3>Classic Tomato and Basil</h3>
+            <p>Fresh tomato sauce topped with basil and mozzarella cheese.</p>
+            <p>A simple yet flavorful choice for pizza enthusiasts.</p>
+            <br>
+            <span>₹220</span>
+            <span>Size: Medium 11'inch</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+    
+        <!-- Veggie Delight Pizza -->
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/premium-photo/vegetable-delight-pizza-with-broccoli-tomatoes-cheese_1204564-136145.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="Veggie Delight Pizza">
+            </div>
+            <h2>Veggie Delight Pizza <img src="veg-icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+            <h3>Loaded with Fresh Vegetables</h3>
+            <p>Abundant fresh vegetables including broccoli, tomatoes, and bell peppers.</p>
+            <p>Perfect for a healthy and satisfying meal.</p>
+            <br>
+            <span>₹250</span>
+            <span>Size: Medium 11'inch</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+    
+        <!-- BBQ Chicken Pizza -->
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/premium-photo/barbecue-pulled-pork-pizza-with-cheese-pepper-sauce-closeup-table-horizontal_227841-1680.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="BBQ Chicken Pizza">
+            </div>
+            <h2>BBQ Chicken Pizza <img src="non-veg icon.png" alt="" style="width: 20px; height: 20px;"></h2>
+            <h3>Smoky BBQ Flavor</h3>
+            <p>Chicken pieces smothered in a tangy BBQ sauce.</p>
+            <p>Great for those who enjoy a smoky and spicy flavor profile.</p>
+            <br>
+            <span>₹300</span>
+            <span>Size: Medium 11'inch</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+    
+        <!-- Mushroom Pizza -->
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/premium-photo/delicious-mushroom-pizza-wooden-board-ready-be-served-dinner_115919-92541.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="Mushroom Pizza">
+            </div>
+            <h2>Mushroom Pizza <img src="veg-icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+            <h3>Earthy Mushroom Delight</h3>
+            <p>Loaded with savory mushrooms and melted cheese.</p>
+            <p>A great option for mushroom lovers and vegetarians alike.</p>
+            <br>
+            <span>₹280</span>
+            <span>Size: Medium 11'inch</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+    
+        <!-- Onion Pizza -->
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/premium-photo/pizza-with-large-number-toppings-chicken-onions-mushrooms-cheese-creamy-sauce-pizza-composition-with-ingredients-black-table_207126-2164.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid " alt="Onion Pizza">
+            </div>
+            <h2>Onion Pizza <img src="veg-icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+            <h3>Savory Onion Toppings</h3>
+            <p>Caramelized onions on a cheesy base with a touch of herbs.</p>
+            <p>A flavorful choice with a sweet and savory balance.</p>
+            <br>
+            <span>₹140</span>
+            <span>Size: Medium 11'inch</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+    
+        <!-- Pepperoni Pizza -->
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/premium-photo/pepperoni-pizza-with-melted-cheese-toppings-wooden-board_83925-12944.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="Pepperoni Pizza">
+            </div>
+            <h2>Pepperoni Pizza <img src="non-veg icon.png" alt="" style="width: 20px; height: 20px;"></h2>
+            <h3>Spicy Pepperoni Slices</h3>
+            <p>Generous slices of pepperoni on top of a cheesy base.</p>
+            <p>For those who love a bit of spice with their pizza.</p>
+            <br>
+            <span>₹280</span>
+            <span>Size: Medium 11'inch</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+    
+        <!-- Sausage Pizza -->
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/premium-photo/meat-feast-barbecue-pizza-with-topping-pepperoni-sausage-salami_1099751-26676.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="Sausage Pizza">
+            </div>
+            <h2>Sausage Pizza <img src="non-veg icon.png" alt="" style="width: 20px; height: 20px;"></h2>
+            <h3>Rich Sausage Flavor</h3>
+            <p>Sliced sausage pieces with a blend of spices and cheese.</p>
+            <p>A hearty and satisfying option for meat lovers.</p>
+            <br>
+            <span>₹270</span>
+            <span>Size: Medium 11'inch</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+    
+        <!-- Shrimp Pizza -->
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/premium-photo/pizza-with-shrimp-vegetables-it-pizza-table_1044943-64357.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="Shrimp Pizza">
+            </div>
+            <h2>Shrimp Pizza <img src="non-veg icon.png" alt="" style="width: 20px; height: 20px;"></h2>
+            <h3>Delicious Shrimp Toppings</h3>
+            <p>Pizza topped with succulent shrimp and a hint of garlic.</p>
+            <p>Perfect for seafood lovers seeking a unique pizza experience.</p>
+            <br>
+            <span>₹270</span>
+            <span>Size: Medium 11'inch</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+    
+        <!-- Tomato Pizza -->
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/free-photo/pizza-pizza-filled-with-tomatoes-salami-olives_140725-1200.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="Tomato Pizza">
+            </div>
+            <h2>Tomato Pizza <img src="veg-icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+            <h3>Fresh Tomato Flavor</h3>
+            <p>Rich tomato sauce and fresh tomatoes for a tangy flavor.</p>
+            <p>A great choice for those who enjoy a simple, classic pizza.</p>
+            <br>
+            <span>₹130</span>
+            <span>Size: Medium 11'inch</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+    
+        <!-- Veggie Pizza -->
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/free-photo/pizza-food-food_144627-38484.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="Veggie Pizza">
+            </div>
+            <h2>Veggie Pizza <img src="veg-icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+            <h3>Garden Fresh Veggies</h3>
+            <p>Loaded with a variety of fresh vegetables and cheese.</p>
+            <p>A healthy and tasty option for vegetarians.</p>
+            <br>
+            <span>₹250</span>
+            <span>Size: Medium 11'inch</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+    
+        <!-- Zucchini Pizza -->
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/premium-photo/zucchini-goat-cheese-pizza_984355-8989.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="Zucchini Pizza">
+            </div>
+            <h2>Zucchini Pizza <img src="veg-icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+            <h3>Healthy Zucchini Toppings</h3>
+            <p>Features tender zucchini slices and a savory cheese base.</p>
+            <p>An excellent choice for a light and nutritious pizza option.</p>
+            <br>
+            <span>₹220</span>
+            <span>Size: Medium 11'inch</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+    </div>
+    
+
+    <!-- Desserts Section -->
+    <div class="category-heading">
+        <h3 style="text-align: center; color: #f4a261;">Desserts</h3>
+    </div>
+    <div class="menu-container">
+        <!-- 8 Dessert Boxes -->
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/premium-photo/chocolate-cake-piece-brown-layered-dessert-with-cream-white-saucer_1029622-156848.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+            </div>
+            <h2>Chocolate Cake</h2>
+            <h3>Sweet Treat</h3>
+            <span>₹60</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/free-photo/ice-cream_144627-19532.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+            </div>
+            <h2>Strawberry Ice Cream</h2>
+            <h3>Refreshing Dessert</h3>
+            <span>₹60</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/free-photo/ice-cream-scoops-served-bowl_1220-7252.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+            </div>
+            <h2>Vanilla Ice Cream</h2>
+            <h3>Refreshing Dessert</h3>
+            <span>₹45</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/premium-photo/national-raspberries-n-cream-day-plate-with-delicious-raspberry-cheesecake_1240151-4037.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+            </div>
+            <h2>Cheesecake</h2>
+            <h3>Sweet Treat</h3>
+            <span>₹40</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/premium-photo/piece-cake-with-chocolate-sauce-it_1153121-2852.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+            </div>
+            <h2>Brownies</h2>
+            <h3>Sweet Treat</h3>
+            <span>₹50</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/premium-photo/bowl-fruit-with-bananas-other-fruits-table_1222055-1366.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+            </div>
+            <h2>Fruit Salad</h2>
+            <h3>Refreshing Dessert</h3>
+            <span>₹60</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/free-photo/chocolate-panna-cotta_74190-1414.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+            </div>
+            <h2>Panna Cotta</h2>
+            <h3>Sweet Treat</h3>
+            <span>₹70</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/free-photo/tiramisu-with-mascarpone-cheese-chocolate-plate_140725-11024.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+            </div>
+            <h2>Tiramisu</h2>
+            <h3>Sweet Treat</h3>
+            <span>₹50</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- Pasta Section -->
+    <div class="category-heading">
+        <h3 style="text-align: center; color: #2a9d8f;">Pasta</h3>
+    </div>
+    <div class="menu-container">
+        <!-- 6 Pasta Boxes -->
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/free-photo/spaghetti-with-bolognese-sauce-wooden-tablexa_123827-22962.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+            </div>
+            <h2>Spaghetti Bolognese <img src="veg-icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+            <h3>Italian Cuisine</h3>
+            <span>₹170</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/premium-photo/basil-leaves-pasta-with-arabiata-sauce_693630-21660.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+            </div>
+            <h2>Penne Arrabiata <img src="veg-icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+            <h3>Spicy Delight</h3>
+            <span>₹160</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/premium-photo/bottle-wine-plate-pasta-bottle-wine_975681-86967.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+            </div>
+            <h2>Fettuccine Alfredo <img src="veg-icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+            <h3>Italian Cuisine</h3>
+            <span>₹160</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/premium-photo/plate-lasagna-traditional-background-professional-advertising-food-photo-ai-generated_755721-57100.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+            </div>
+            <h2>Lasagna <img src="veg-icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+            <h3>Italian Cuisine</h3>
+            <span>₹150</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/premium-photo/pan-macaroni-cheese-with-slice-pizza-it_1262893-1238.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+            </div>
+            <h2>Macaroni and Cheese <img src="veg-icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+            <h3>Comfort Food</h3>
+            <span>₹180</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/premium-photo/ravioli-with-ricotta-cheese-spinach-nuts_97840-2888.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+            </div>
+            <h2>Ravioli <img src="veg-icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+            <h3>Italian Cuisine</h3>
+            <span>₹160</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- Burger Section -->
+    <div class="category-heading">
+        <h3 style="text-align: center; color: #8bc34a;">Burger</h3>
+    </div>
+    <div class="menu-container">
+        <!-- 6 Burger Boxes -->
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/premium-photo/cheeseburger-with-toasted-bun-melted-american-che_1177965-129785.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+            </div>
+            <h2>Classic Cheeseburger <img src="veg-icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+            <h3>Tasty Burger</h3>
+            <span>₹80</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/free-photo/big-sandwich-hamburger-burger-with-beef-cheese-tomato-fried-bacon_2829-14035.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+            </div>
+            <h2>Bacon Cheeseburger <img src="veg-icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+            <h3>Tasty Burger</h3>
+            <span>₹70</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/free-photo/sandwich-with-chicken-burger-tomatoes-lettuce_2829-16577.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+            </div>
+            <h2>Chicken Burger <img src="non-veg icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+            <h3>Tasty Burger</h3>
+            <span>₹75</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/premium-photo/fish-burger-with-crispy-fish-fillet-lettuce-tomato-splash-tartar-sauce_1199645-20065.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+            </div>
+            <h2>Fish Burger <img src="non-veg icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+            <h3>Tasty Burger</h3>
+            <span>₹70</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/free-photo/front-view-veggie-burger-plate_23-2148784530.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+            </div>
+            <h2>Veggie Burger <img src="veg-icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+            <h3>Tasty Burger</h3>
+            <span>₹80</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/premium-photo/vegan-burger-with-black-bean-quinoa-patty-avocado-spread-sweet-potato-fries-ai-generate_1241530-15655.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+            </div>
+            <h2>Black Bean Burger <img src="veg-icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+            <h3>Tasty Burger</h3>
+            <span>₹75</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- Sandwich Section -->
+<div class="category-heading">
+    <h3 style="text-align: center; color: #f08a5d;">Sandwiches</h3>
+</div>
+<div class="menu-container">
+    <!-- 6 Sandwich Boxes -->
+    <div class="box">
+        <div class="box-img">
+            <img src="https://img.freepik.com/free-photo/sandwich-with-ground-meat_658428-394.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+        </div>
+        <h2>Grilled Cheese Sandwich <img src="veg-icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+        <h3>Cheesy Delight</h3>
+        <span>₹100</span>
+        <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="box">
+        <div class="box-img">
+            <img src="https://img.freepik.com/free-photo/side-view-club-sandwich-with-salted-cucumbers-lemon-olives-round-white-plate_176474-3049.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+        </div>
+        <h2>Club Sandwich <img src="veg-icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+        <h3>Tasty Layers</h3>
+        <span>₹80</span>
+        <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="box">
+        <div class="box-img">
+            <img src="https://img.freepik.com/premium-photo/pesto-chicken-panini-with-roasted-red-peppers-mozzarella-cheese-spinach-focaccia-bread_1276612-24089.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+        </div>
+        <h2>Chicken Sandwich <img src="non-veg icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+        <h3>Perfect Bite</h3>
+        <span>₹90</span>
+        <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="box">
+        <div class="box-img">
+            <img src="https://img.freepik.com/premium-photo/plate-eggs-egg-sandwich-with-side-plate-with-bowl-salad_980072-111.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+        </div>
+        <h2>Egg Sandwich <img src="non-veg icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+        <h3>Breakfast Special</h3>
+        <span>₹90</span>
+        <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="box">
+        <div class="box-img">
+            <img src="https://img.freepik.com/free-photo/tuna-sandwich-with-mayo-vegetables-gray-stone-background_123827-23967.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+        </div>
+        <h2>Tuna Sandwich <img src="non-veg icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+        <h3>Seafood Flavor</h3>
+        <span>₹100</span>
+        <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="box">
+        <div class="box-img">
+            <img src="https://img.freepik.com/free-photo/club-sandwich-panini-with-ham-cheese-tomato-herbs_2829-19932.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+        </div>
+        <h2>Vegetable Sandwich <img src="veg-icon.png" alt="Veg" style="width: 20px; height: 20px;"></h2>
+        <h3>Fresh & Healthy</h3>
+        <span>₹80</span>
+        <button class="add-cart-btn">Add to Cart</button>
+    </div>
+</div>
+
+<!-- Fries Section -->
+<div class="category-heading">
+    <h3 style="text-align: center; color: #f6bd60;">Fries</h3>
+</div>
+<div class="menu-container">
+    <!-- 4 Fries Boxes -->
+    <div class="box">
+        <div class="box-img">
+            <img src="https://img.freepik.com/premium-photo/plate-french-fries-with-ketchup-ketchup_975681-63873.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+        </div>
+        <h2>Classic Fries</h2>
+        <h3>Crunchy & Salty</h3>
+        <span>₹60</span>
+        <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="box">
+        <div class="box-img">
+            <img src="https://img.freepik.com/premium-photo/plate-french-fries-with-cheese-sauce-it_975681-60348.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+        </div>
+        <h2>Cheese Fries</h2>
+        <h3>Cheesy Goodness</h3>
+        <span>₹90</span>
+        <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="box">
+        <div class="box-img">
+            <img src="https://img.freepik.com/premium-photo/sweet-potato-fries-with-side-warm-cinnamon_1169880-243100.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+        </div>
+        <h2>Sweet Potato Fries</h2>
+        <h3>Healthy & Sweet</h3>
+        <span>₹90</span>
+        <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="box">
+        <div class="box-img">
+            <img src="https://img.freepik.com/premium-photo/curly-fries-served-dish-isolated-grey-background-top-view-singapore-fast-food_689047-5087.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+        </div>
+        <h2>Curly Fries</h2>
+        <h3>Fun & Tasty</h3>
+        <span>₹80</span>
+        <button class="add-cart-btn">Add to Cart</button>
+    </div>
+</div>
+
+
+    <!-- Cold Drinks Section -->
+    <div class="category-heading">
+        <h3 style="text-align: center; color: #264653;">Cold Drinks</h3>
+    </div>
+    <div class="menu-container">
+        <!-- Cold Drinks Boxes -->
+        <div class="box">
+            <div class="box-img">
+                <img src="https://img.freepik.com/free-photo/ice-cola-glass_74190-3813.jpg?ga=GA1.1.1971770590.1724942342&semt=ais_hybrid" alt="">
+            </div>
+            <h2>Coke</h2>
+            <h3>Refreshing Drink</h3>
+            <span>₹60</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="data:image/jpeg;base64,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" alt="">
+            </div>
+            <h2>Sprite</h2>
+            <h3>Refreshing Drink</h3>
+            <span>₹55</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="data:image/jpeg;base64,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" alt="">
+            </div>
+            <h2>Fanta</h2>
+            <h3>Refreshing Drink</h3>
+            <span>₹50</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="data:image/jpeg;base64,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" alt="">
+            </div>
+            <h2>Diet Coke</h2>
+            <h3>Refreshing Drink</h3>
+            <span>₹60</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="data:image/jpeg;base64,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" alt="">
+            </div>
+            <h2>Mountain Dew</h2>
+            <h3>Refreshing Drink</h3>
+            <span>₹60</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="box">
+            <div class="box-img">
+                <img src="data:image/jpeg;base64,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" alt="">
+            </div>
+            <h2>Pepsi</h2>
+            <h3>Refreshing Drink</h3>
+            <span>₹60</span>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Service -->
+    <section class="services" id="services">
+        <div class="heading">
+            <span>Services</span>
+            <h2>We provide best food services</h2>
+        </div>
+
+        <div class="services-container">
+            <!-- Step 1: Choose Your Pizza -->
+            <div class="s-box">
+                <img src="https://images.pexels.com/photos/803290/pexels-photo-803290.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Choose Pizza">
+                <h3>Choose Your Pizza</h3>
+                <p>Select from our wide variety of pizzas,whether you prefer vegetarian, non-vegetarian, or customize your toppings.</p>
+            </div>
+            
+            <!-- Step 2: Place Your Order -->
+            <div class="s-box">
+                <img src="https://images.pexels.com/photos/4391470/pexels-photo-4391470.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Place Order">
+                <h3>Place Your Order</h3>
+                <p>Once you've selected your pizza, simply add it to the cart and place your order through our seamless online platform.</p>
+            </div>
+            
+            <!-- Step 3: Quick Delivery -->
+            <div class="s-box">
+                <img src="https://images.pexels.com/photos/4393426/pexels-photo-4393426.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Quick Delivery">
+                <h3>Quick Delivery</h3>
+                <p>Our delivery team ensures that your hot and fresh pizza is delivered to your doorstep in no time.</p>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- Connect -->
+    <section class="connect">
+        <div class="connect-text">
+            <span>Let's Talk</span>
+            <h2>Connect now</h2>
+        </div>
+        <a href="#" class="btn">Contact Us</a>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="contact-box">
+            <h3>Slice of Heaven</h3>
+            <span>Connect With Us</span>
+            <div class="social">
+                <a href="#"><i class='bx bxl-facebook' ></i></a>
+                <a href="#"><i class='bx bxl-twitter' ></i></a>
+                <a href="#"><i class='bx bxl-instagram' ></i></a>
+            </div>
+        </div>
+        <div class="contact-box">
+            <h3>Menu Links</h3>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#services">Service</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </div>
+        <div class="contact-box">
+            <h3>Quick Links</h3>
+            <li><a href="#Contact">Contact</a></li>
+            <li><a href="#Privacy Policy">Privacy Policy</a></li>
+            <li><a href="#Disclaimer">Disclaimer</a></li>
+            <li><a href="#Terms Of Use">Terms Of Use</a></li>
+        </div>
+        <div class="contact-box address">
+            <h3>Contact</h3>
+            <i class='bx bxs-map' ><span>005, Lorem ipsum dolor, sit amet consectetur, India</span></i>
+            <i class='bx bxs-phone' ><span>+91 99999999</span></i>
+            <i class='bx bxs-envelope' ><span>Example@gmail.com</span></i>
+        </div>
+    </section>
+
+    <div class="copyright">
+        <p>© Copyright All Right Reserved.</p>
+    </div>
+
+
+    <!-- Scroll Reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- Link To JavaScript -->
+    <script src="script.js"></script>
+
+    <script>
+ // Variables for cart
+ let cart = [];
+let cartCount = 0;
+
+// Function to add item to the cart
+function addToCart(itemName, itemPrice) {
+    let existingItem = cart.find(item => item.name === itemName);
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        cart.push({ name: itemName, price: itemPrice, quantity: 1 });
+    }
+    cartCount++;
+    updateCart();
+}
+
+// Function to remove one quantity of an item from the cart
+function removeFromCart(itemName) {
+    let existingItem = cart.find(item => item.name === itemName);
+    if (existingItem && existingItem.quantity > 1) {
+        existingItem.quantity--;
+        cartCount--;
+    } else if (existingItem) {
+        cart = cart.filter(item => item.name !== itemName);
+        cartCount--;
+    }
+    updateCart();
+}
+
+// Function to fully remove an item from the cart
+function removeAllFromCart(itemName) {
+    let itemIndex = cart.findIndex(item => item.name === itemName);
+    if (itemIndex !== -1) {
+        cartCount -= cart[itemIndex].quantity;
+        cart.splice(itemIndex, 1);
+    }
+    updateCart();
+}
+
+// Function to update cart UI and show a summary of all items
+function updateCart() {
+    const cartItemsElement = document.getElementById('cart-items');
+    const cartCountElement = document.getElementById('cart-count');
+    const cartTotalElement = document.getElementById('cart-total');
+    const cartSummaryElement = document.getElementById('cart-summary');
+
+    cartItemsElement.innerHTML = '';
+    let totalPrice = 0;
+
+    cart.forEach(item => {
+        const cartItem = document.createElement('li');
+        cartItem.classList.add('cart-item');
+        cartItem.innerHTML = `
+            ${item.name} - ₹${item.price} x ${item.quantity}
+            <button class="btn btn-sm btn-danger" onclick="removeFromCart('${item.name}')">-</button>
+            <button class="btn btn-sm btn-success" onclick="addToCart('${item.name}', ${item.price})">+</button>
+            <button class="btn btn-sm btn-warning" onclick="removeAllFromCart('${item.name}')">Remove All</button>
+        `;
+        cartItemsElement.appendChild(cartItem);
+        totalPrice += item.price * item.quantity;
+    });
+
+    cartCountElement.innerText = cartCount;
+    cartTotalElement.innerText = `Total: ₹${totalPrice}`;
+
+    // Show summary of all items at the end
+    cartSummaryElement.innerHTML = `
+        <h4>Summary</h4>
+        <p>Total Items: ${cartCount}</p>
+        <p>Total Price: ₹${totalPrice}</p>
+    `;
+
+    // Show/hide scrollbar if necessary
+    if (cartItemsElement.scrollHeight > cartItemsElement.clientHeight) {
+        cartItemsElement.style.overflowY = 'scroll';
+    } else {
+        cartItemsElement.style.overflowY = 'hidden';
+    }
+}
+
+// Attach add to cart functionality to buttons
+document.querySelectorAll('.add-cart-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const itemContainer = button.closest('.box');
+        const itemName = itemContainer.querySelector('h2').textContent.trim();
+        const itemPrice = parseInt(itemContainer.querySelector('span').textContent.replace('₹', '').trim());
+        addToCart(itemName, itemPrice);
+    });
+});
+
+
+    </script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>
